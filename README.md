@@ -1,21 +1,32 @@
 # SENS-MVP-local
 
-A locally runnable Node.js version of [SENS-MVP](https://github.com/yijisuk/SENS-MVP) — a Telegram bot that delivers AI-powered financial intelligence across macro economics, geopolitics, equity analysis, and more.
+> SENS는 뉴스(사실), 예측 시장(확률), 소셜 미디어(심리)라는 세 가지 이질적인 데이터 소스를 LLM으로 통합하여, 투자자에게 다층적 마켓 인텔리전스를 제공하는 텔레그램 기반 서비스입니다.
 
-This repository is a direct reformat of the original Cloudflare Workers-based codebase into a standard Node.js long-polling setup. All core logic, workflows, and API integrations are preserved; only the infrastructure layer has been adapted.
+A locally runnable Node.js version of SENS — an AI-powered financial intelligence Telegram bot that delivers comprehensive analysis across macroeconomics, geopolitics, and US equities. 
 
 ---
 
-## Key Differences from SENS-MVP
+## Introduction
 
-| Aspect | SENS-MVP (Cloudflare Workers) | SENS-MVP-local (Node.js) |
-|---|---|---|
-| **Transport** | Webhook (HTTP POST) | Long-polling (`bot.launch()`) |
-| **Session storage** | Cloudflare KV (cross-isolate) | In-memory `Map` (process-scoped) |
-| **Background jobs** | Cloudflare Queues | Native `Promise` + `setInterval` |
-| **Config** | `wrangler.toml` + secrets | `.env` file via `dotenv` |
-| **Deployment** | `wrangler deploy` | `node` / `tsx` directly |
-| **CPU limits** | 5 min (Workers Unbound) | Unlimited |
+SENS is designed for proactive, part-time retail investors who manage US-listed equity portfolios. Rather than relying on emotional decisions or entertainment-focused media, SENS empowers users to build strategies with a probabilistic edge based on macroeconomic data and corporate financials.
+
+By leveraging an agent-based workflow, SENS orchestrates multiple LLMs (via OpenRouter) to synthesize factual news (Perplexity AI), predictive market probabilities (Polymarket), and qualitative market sentiment (Manus AI) into actionable intelligence. 
+
+---
+
+## Pain Points & Solutions
+
+### 1. Information Overload & Fragmentation
+**Pain Point:** Investors must individually check macro news, interest rates, prediction markets, and sentiment indicators across multiple sources. Synthesizing this into an actionable judgment takes 1–2 hours daily.
+**Solution (Automated Synthesis):** SENS automatically collects and synthesizes all these disparate sources into a core insight briefing within 3 minutes, triggered by a single Telegram command.
+
+### 2. Language & Time Zone Barriers
+**Pain Point:** Tracking real-time English sources (FRED, Polymarket, US financial news) presents language and time zone hurdles. Existing secondary Korean media often lacks speed, accuracy, and objectivity.
+**Solution (Real-time Korean Briefings):** Through LLM-based automatic translation and summarization, SENS provides immediate Korean briefings sourced directly from reliable, primary English data.
+
+### 3. Disconnected Equity Analysis
+**Pain Point:** News, sentiment indicators, and macroeconomic data related to individual stocks are scattered, making it excessively time-consuming to build the context needed for entry and exit timing.
+**Solution (On-Demand Deep Dives):** SENS offers instant, integrated analysis of individual equities upon request. It combines fundamental financial analysis, valuation metrics, real-time news, and market participant sentiment into a single, comprehensive corporate evaluation.
 
 ---
 
