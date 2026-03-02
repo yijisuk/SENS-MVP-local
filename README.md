@@ -1,5 +1,7 @@
 # SENS-MVP-local
 
+**Check the Korean demo videos via [linktr.ee/thesensbot](https://linktr.ee/thesensbot)**
+
 > SENS is a Telegram-based service that uses LLMs to unify three heterogeneous data sources — news (facts), prediction markets (probabilities), and social media (sentiment) — delivering multi-layered market intelligence to investors.
 
 A locally runnable Node.js version of SENS — an AI-powered financial intelligence Telegram bot that delivers comprehensive analysis across macroeconomics, geopolitics, and US equities. 
